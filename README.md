@@ -28,19 +28,22 @@ Steps to check and set openSSH
 In the steps mentioned below, local-host = Windows server and remote-host = AIX server.
 -- -----------------------------------------------------------------------------------------
 1)Login from the local-host to remote-host using the SSH key authentication to verify whether it works properly using:
-	ssh -l <username> <remote-host-IP> 
-  If you are able to login, it means openSSH is working as expected, else if you get an error, follow below steps to set openSSH.
+```ssh -l <username> <remote-host-IP> ```
+
+If you are able to login, it means openSSH is working as expected, else if you get an error, follow below steps to set openSSH.
 
 2)Verify that local-host and remote-host are running openSSH using:
-	ssh -V (It should give you output someting like: OpenSSH_4.3p2, OpenSSL 0.9.8b 04 May 2006)
+```ssh -V (It should give you output someting like: OpenSSH_4.3p2, OpenSSL 0.9.8b 04 May 2006)```
   
 3)Install local-host's public key on the remote-host.
-  Copy the content of the public key from the local-host (\home\<username>\.ssh\id_rsa.pub) and paste it to the /home/<username>/.ssh/authorized_keys on the remote-host. 
-  If the /home/<username>/.ssh/authorized_keys already has some other public key, you can append this to the end of it. If the .ssh directory under your home directory on remote-host doesn?t exist, please create it.
+Copy the content of the public key from the local-host ```/home/<username>/.ssh/id_rsa.pub``` and paste it to the ```/home/<username>/.ssh/authorized_keys``` on the remote-host. 
+
+If the ```/home/<username>/.ssh/authorized_keys``` already has some other public key, you can append this to the end of it. 
+If the .ssh directory under your home directory on remote-host doesn't exist, please create it.
 
 4)Give appropriate permissions to the .ssh directory on the remote-host using:
-	   chmod 755 ~/.ssh
-	   chmod 644 ~/.ssh/authorized_keys
+	   ```chmod 755 ~/.ssh
+	   chmod 644 ~/.ssh/authorized_keys```
    
 5)Verify if openSSH is configured using the command mentioned in step 1.
 
@@ -51,16 +54,27 @@ Steps to trigger the DB conversion:
 -- -------------------------------------------------------
 
 - Update D:\DBConversionInfo.properties file to provide information for DB conversion.
+
 Eg: 
+
 Username=d97ro1            (Instance owner of AIX server)
+
 HostAddress=11.158.37.01   (AIX server IP Address)
+
 AIXDBName=DPQRS6           (Source DB name on AIX server)
+
 AIXDBSchema=SDPQRA         (Source DB schema on AIX server)
+
 AIXDBUser=SGHUTR           (Source DB user on AIX server)
+
 WINDBName=BPQRS7           (Target DB name on Windows server)
+
 WINDBSchema=STWDBA         (Target DB schema on Windows server)
+
 WINDBUser=DEVUSER          (Target DB user on Windows server)
+
 PriMailRecipient=saurabh.agrawal@gmail.com      (Primary mail recipient) 
+
 SecMailRecipient=ashish.wadnerkar@gmail.com     (Secondary mail recipient) 
 
 Note:
