@@ -55,6 +55,7 @@ Eg:
 Username=d97ro1            (Instance owner of AIX server)
 HostAddress=11.158.37.01   (AIX server IP Address)
 AIXDBName=DPQRS6           (Source DB name on AIX server)
+
 AIXDBSchema=SDPQRA         (Source DB schema on AIX server)
 AIXDBUser=SGHUTR           (Source DB user on AIX server)
 WINDBName=BPQRS7           (Target DB name on Windows server)
