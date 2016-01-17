@@ -5,6 +5,7 @@ DB2-Cross-Platform-DB-Porting-Tool
 - This tool, once configured, can be triggred manually or via CRON job to automatically port a DB2 database from the AIX to       Windows machine.
 - My DB2's Got Talent presentation on the same topic is checked in into the repository as AutomaticDBPortingProcess.pdf
 ***********************************************************************************************
+***********************************************************************************************
 This tool creates a windows replica of AIX database and has following salient features:
 
 - Automated generation and transfer of dump files from AIX to windows server.
@@ -55,7 +56,6 @@ Eg:
 Username=d97ro1            (Instance owner of AIX server)
 HostAddress=11.158.37.01   (AIX server IP Address)
 AIXDBName=DPQRS6           (Source DB name on AIX server)
-
 AIXDBSchema=SDPQRA         (Source DB schema on AIX server)
 AIXDBUser=SGHUTR           (Source DB user on AIX server)
 WINDBName=BPQRS7           (Target DB name on Windows server)
