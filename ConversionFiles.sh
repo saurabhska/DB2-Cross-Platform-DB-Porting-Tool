@@ -1,6 +1,6 @@
 #!/bin/ksh
 #Eg: sh ConversionFiles.sh <USERNAME> <HOSTADDRESS> <AIXDBNAME> <AIXDBSCHEMA> <AIXDBUSER> <WINDBNAME> <WINDBSCHEMA> <WINDBUSER> <mail recipient>
-#sh ConversionFiles.sh d97sn1 10.28.33.97 UPGR4001 SONEDBA D97SN1 WNTESTDB WNSCHEMA WNUSER #saurabh.agrawal@aciworldwide.com,prasad.pande@aciworldwide.com
+#sh ConversionFiles.sh myusername xx.xxx.xx.xx UPGR4001 SONEDBA D97SN1 WNTESTDB WNSCHEMA WNUSER #saurabh.agrawal@aciworldwide.com,prasad.pande@aciworldwide.com
 cd /cygdrive/d/AIX2WinDBConvFilesTemp
 export DB2CLP=**$$**
 if [[ $# -eq 10 ]]; then
@@ -171,13 +171,13 @@ cd  /cygdrive/d/AIX2WinDBConvFilesTemp;
 	 echo "*******************************************************************************************************************************" >> mailMessageBody.txt
 	 echo "This is a system generated email. Please don't reply to this mail. Please contact DBA Team in case of issues.">> mailMessageBody.txt
 	 echo "*******************************************************************************************************************************" >> mailMessageBody.txt
-	 #10.128.97.11 = nrcdba01
-	 scp mailMessageBody.txt d97sn1@10.128.97.11:'$HOME'
-	 scp ConversionLogs.zip d97sn1@10.128.97.11:'$HOME'
+	
+	 scp mailMessageBody.txt myusername@xx.xxx.xx.xx:'$HOME'
+	 scp ConversionLogs.zip myusername@xx.xxx.xx.xx:'$HOME'
 	 scp sendmail.sh d97sn1@10.128.97.11:'$HOME'
-	 ssh -l d97sn1 10.128.97.11 exec 'perl -p -i -e "s/^M//g" $HOME/sendmail.sh'
+	 ssh -l myusername xx.xxx.xx.xx exec 'perl -p -i -e "s/^M//g" $HOME/sendmail.sh'
 	 
-	 ssh -l d97sn1 10.128.97.11 exec sh '$HOME'/sendmail.sh `echo "$PriMailRecipient,$SecMailRecipient"` $AIXDBName
+	 ssh -l myusername xx.xxx.xx.xx exec sh '$HOME'/sendmail.sh `echo "$PriMailRecipient,$SecMailRecipient"` $AIXDBName
 	 
 	 #already deleted in postDumpGeneration.sh still to cross check and confirm deleting again
 	ssh -l $Username $HostAddress exec 'rm -rf ~/AIX2WindowsFiles*'
@@ -200,13 +200,13 @@ cd  /cygdrive/d/AIX2WinDBConvFilesTemp;
 	 echo "*******************************************************************************************************************************" >> mailMessageBody.txt
 	 echo "This is a system generated email. Please don't reply to this mail. Please contact DBA Team in case of issues.">> mailMessageBody.txt
 	 echo "*******************************************************************************************************************************" >> mailMessageBody.txt
-	 #10.128.97.11 = nrcdba01
-	 scp mailMessageBody.txt d97sn1@10.128.97.11:'$HOME'
-	 scp ConversionLogs.zip d97sn1@10.128.97.11:'$HOME'
-	 scp sendmail.sh d97sn1@10.128.97.11:'$HOME'
-	 ssh -l d97sn1 10.128.97.11 exec 'perl -p -i -e "s/^M//g" $HOME/sendmail.sh'
+
+	 scp mailMessageBody.txt myusername@xx.xxx.xx.xx:'$HOME'
+	 scp ConversionLogs.zip myusername@xx.xxx.xx.xx:'$HOME'
+	 scp sendmail.sh myusername@xx.xxx.xx.xx:'$HOME'
+	 ssh -l myusername xx.xxx.xx.xx exec 'perl -p -i -e "s/^M//g" $HOME/sendmail.sh'
 	 
-	 ssh -l d97sn1 10.128.97.11 exec sh '$HOME'/sendmail.sh $PriMailRecipient $AIXDBName
+	 ssh -l myusername xx.xxx.xx.xx exec sh '$HOME'/sendmail.sh $PriMailRecipient $AIXDBName
 	
 	#already deleted in postDumpGeneration.sh still to cross check and confirm deleting again
 	ssh -l $Username $HostAddress exec 'rm -rf ~/AIX2WindowsFiles*'
